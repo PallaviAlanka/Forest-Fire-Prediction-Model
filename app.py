@@ -1,15 +1,16 @@
 import streamlit as st
 import pickle
 import numpy as np
-model=pickle.load(open('model.pkl','rb'))
-
+#model=pickle.load(open('model.pkl','rb'))
+#model=pickle.load(open('C:\Users\palla\PycharmProjects\Forest-Fire\venv\model.pkl''rb'))
+model = pickle.load(open('C:/Users/palla/PycharmProjects/Forest-Fire/venv/model.pkl', 'rb'))
 
 def predict_forest(oxygen,humidity,temperature):
     input=np.array([[oxygen,humidity,temperature]]).astype(np.float64)
     prediction=model.predict_proba(input)
     pred='{0:.{1}f}'.format(prediction[0][0], 2)
     return float(pred)
-
+#taking input from the user from website.
 def main():
     st.title("Streamlit Tutorial")
     html_temp = """
